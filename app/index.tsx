@@ -35,7 +35,6 @@ export default function Index() {
         <View style={styles.addbutton}>
           <Button title="Add News" color="white" onPress={addnews}/>
         </View>
-        <Text>{allnews}</Text>
       </View>
 
       {allnews.length === 0 ? (
