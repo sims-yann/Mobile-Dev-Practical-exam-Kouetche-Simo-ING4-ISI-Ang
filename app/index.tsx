@@ -3,8 +3,16 @@ import { Text, View, StyleSheet, TextInput, Button } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Index() {
-  const [allnews, setAllNews] = useState([]);
+  const [allnews, setAllNews] = useState<string[]>([]);
   const [news, setNews] = useState("");
+
+  const addnews = () => {
+    if (news.trim() === "") return;
+      setAllNews([...allnews, news]);
+
+    setNews("");
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -16,9 +24,9 @@ export default function Index() {
           onChangeText={setNews}
         />
         <View style={styles.addbutton}>
-          <Button title="Add News" color="white"/>
+          <Button title="Add News" color="white" onPress={addnews}/>
         </View>
-        <Text>{news}</Text>
+        <Text>{allnews}</Text>
       </View>
     </SafeAreaView>
   );
